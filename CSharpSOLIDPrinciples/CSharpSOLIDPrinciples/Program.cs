@@ -6,7 +6,19 @@ namespace CSharpSOLIDPrinciples
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Rating System..");
+            var engine = new BikeRatingEngine();
+            engine.Rate();
+            if (engine.Rating > 0)
+            {
+                Console.WriteLine($"Rating:{engine.Rating}");
+
+            }
+            else
+            {
+                Console.WriteLine($"No Rating");
+
+            }
         }
     }
 }

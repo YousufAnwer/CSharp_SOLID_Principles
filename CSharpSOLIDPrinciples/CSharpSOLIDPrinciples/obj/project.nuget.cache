@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "jhsMLZe+KB321wYqTR2tS1dzvO80tWvUR9eGq+0bMWCf2Ctz3ziX57wABD7fiuL2taVw2R8+YRkUV+T6jTo8+g==",
+  "dgSpecHash": "BuP/7ZYys0lO4zeXB5nU+GlXdcKfyExsxJX0Rblf6acqCAtmQnnOZiNLgBPN462KnzAAZEqTzGpR68vNScqNJQ==",
   "success": true,
   "projectFilePath": "E:\\Github repos\\CSharp_SOLID_Principles\\CSharpSOLIDPrinciples\\CSharpSOLIDPrinciples\\CSharpSOLIDPrinciples.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\hp\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
