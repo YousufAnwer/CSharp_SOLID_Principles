@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharpSOLIDPrinciples
+namespace CSharpSOLIDPrinciples.Ratings.Abstract
 {
-    public enum BikeType
+    public abstract class Rating
     {
-        unknown,
-        _70cc,
-        _125cc,
-        _150cc
+        public abstract void Rate(Bike bike);
     }
 }
