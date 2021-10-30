@@ -1,5 +1,6 @@
 ﻿using CSharpSOLIDPrinciples.Ratings;
 using CSharpSOLIDPrinciples.Ratings.Abstract;
+using System;
 
 namespace CSharpSOLIDPrinciples.Factory
 {
@@ -7,21 +8,27 @@ namespace CSharpSOLIDPrinciples.Factory
     {
         public Rating Create(Bike bike, BikeRatingEngine bikeRatingEngine)
         {
-            switch (bike.cc)
+
+            try
             {
-                case BikeType._70cc:
-                    return new Rating70cc(bikeRatingEngine, bikeRatingEngine.printer);
-                case BikeType._125cc:
-                    return new Rating125cc(bikeRatingEngine, bikeRatingEngine.printer);
-                case BikeType._150cc:
-                    return new Rating150cc(bikeRatingEngine, bikeRatingEngine.printer);
-
-                default:
-                    // Implement Null Object Pattern
-                    return new RatingNull(bikeRatingEngine, bikeRatingEngine.printer);
+                string cc = bike.cc.ToString().Substring(1, bike.cc.ToString().Length - 1);
+                return (Rating)Activator.CreateInstance
+                    (
+                    Type.GetType($"CSharpSOLIDPrinciples.Ratings.Rating{cc}"),
+                    new object[]
+                    {
+                        bikeRatingEngine, bikeRatingEngine.printer
+                    }
 
 
+                    );
             }
+            catch
+            {
+
+                return new RatingNull(bikeRatingEngine, bikeRatingEngine.printer);
+            }
+
         }
     }
 }
