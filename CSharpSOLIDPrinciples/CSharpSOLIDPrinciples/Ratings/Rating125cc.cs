@@ -8,33 +8,32 @@ using System.Threading.Tasks;
 
 namespace CSharpSOLIDPrinciples.Ratings
 {
-    public class Rating125cc:Rating
+    public class Rating125cc : Rating
     {
-        private readonly BikeRatingEngine _bikeRatingEngine;
-        private readonly Printer _printer;
+        //private readonly BikeRatingEngine _bikeRatingEngine;
+        //private readonly Printer _printer;
 
-        public Rating125cc(BikeRatingEngine bikeRatingEngine, Printer printer)
+        public Rating125cc(IRating context) : base(context)
         {
-            _bikeRatingEngine = bikeRatingEngine;
-            _printer = printer;
+
         }
         public override void Rate(Bike bike)
         {
-            _printer.PrintOnConsole("Rating 125 cc bike");
-            _printer.PrintOnConsole("Validating Bike");
+            _logger.PrintOnConsole("Rating 125 cc bike");
+            _logger.PrintOnConsole("Validating Bike");
             if (string.IsNullOrEmpty(bike.Company))
             {
-                _printer.PrintOnConsole("Must Sepcify Company");
+                _logger.PrintOnConsole("Must Sepcify Company");
                 return;
             }
             if (bike.Company == "Honda")
             {
-                _bikeRatingEngine.Rating = 4.9m;
+                _context.UpdateRating(4.9m);
 
             }
             else if (bike.Company == "Unique")
             {
-                _bikeRatingEngine.Rating = 4.5m;
+                _context.UpdateRating(4.5m);
             }
         }
 

@@ -13,17 +13,16 @@ namespace CSharpSOLIDPrinciples.Ratings
     /// </summary>
     public class RatingNull : Rating
     {
-        private readonly BikeRatingEngine _bikeRatingEngine;
-        private readonly Printer _printer;
+    //    private readonly BikeRatingEngine _bikeRatingEngine;
+    //    private readonly Printer _printer;
 
-        public RatingNull(BikeRatingEngine bikeRatingEngine, Printer printer)
+        public RatingNull(IRating context) : base(context)
         {
-            _bikeRatingEngine = bikeRatingEngine;
-            _printer = printer;
+
         }
         public override void Rate(Bike bike)
         {
-            Console.WriteLine("Un Known Bike");
+            _logger.PrintOnConsole("Un Known Bike");
         }
     }
 }

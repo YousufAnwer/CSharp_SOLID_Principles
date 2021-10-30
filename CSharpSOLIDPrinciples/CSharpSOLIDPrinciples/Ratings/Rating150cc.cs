@@ -10,31 +10,31 @@ namespace CSharpSOLIDPrinciples.Ratings
 {
     public class Rating150cc:Rating
     {
-        private readonly BikeRatingEngine _bikeRatingEngine;
-        private readonly Printer _printer;
+        //private readonly BikeRatingEngine _bikeRatingEngine;
+        //private readonly Printer _printer;
 
-        public Rating150cc(BikeRatingEngine bikeRatingEngine, Printer printer)
+        public Rating150cc(IRating context) : base(context)
         {
-            _bikeRatingEngine = bikeRatingEngine;
-            _printer = printer;
+
         }
         public override void Rate(Bike bike)
         {
-            _printer.PrintOnConsole("Rating 150 cc bike");
-            _printer.PrintOnConsole("Validating Bike");
+            _logger.PrintOnConsole("Rating 150 cc bike");
+            _logger.PrintOnConsole("Validating Bike");
             if (string.IsNullOrEmpty(bike.Company))
             {
-                _printer.PrintOnConsole("Must Sepcify Company");
+                _logger.PrintOnConsole("Must Sepcify Company");
                 return;
             }
             if (bike.Company == "Honda")
             {
-                _bikeRatingEngine.Rating = 4.2m;
+                _context.UpdateRating(4.2m);
+              
 
             }
             else if (bike.Company == "Suzuki")
             {
-                _bikeRatingEngine.Rating = 5.0m;
+                _context.UpdateRating(5.0m);
             }
         }
 
