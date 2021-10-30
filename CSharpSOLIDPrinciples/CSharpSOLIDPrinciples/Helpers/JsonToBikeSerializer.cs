@@ -14,7 +14,7 @@ namespace CSharpSOLIDPrinciples.Helpers
         public Bike GetBikeObject(string jsonBikeobj)
         {
             string cc = JObject.Parse(jsonBikeobj)["cc"].ToString();
-            cc = cc.Substring(1, 5);
+            cc = cc.Substring(1, cc.Length-1);
             var obj = Type.GetType($"CSharpSOLIDPrinciples.Ratings.Rating{cc}");
             if (obj != null)
             {
