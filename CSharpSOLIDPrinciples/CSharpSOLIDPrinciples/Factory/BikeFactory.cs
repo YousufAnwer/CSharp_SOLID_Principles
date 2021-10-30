@@ -1,4 +1,5 @@
-﻿using CSharpSOLIDPrinciples.Ratings;
+﻿using CSharpSOLIDPrinciples.Helpers;
+using CSharpSOLIDPrinciples.Ratings;
 using CSharpSOLIDPrinciples.Ratings.Abstract;
 using System;
 
@@ -6,15 +7,15 @@ namespace CSharpSOLIDPrinciples.Factory
 {
     public class BikeFactory
     {
+        ClassNameFromEnum NameFromEnum = new ClassNameFromEnum();
         public Rating Create(Bike bike, BikeRatingEngine bikeRatingEngine)
         {
 
             try
             {
-                string cc = bike.cc.ToString().Substring(1, bike.cc.ToString().Length - 1);
                 return (Rating)Activator.CreateInstance
                     (
-                    Type.GetType($"CSharpSOLIDPrinciples.Ratings.Rating{cc}"),
+                    Type.GetType($"CSharpSOLIDPrinciples.Ratings.Rating{NameFromEnum.GetClassName(bike.cc.ToString())}"),
                     new object[]
                     {
                         bikeRatingEngine, bikeRatingEngine.printer

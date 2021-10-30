@@ -11,11 +11,12 @@ namespace CSharpSOLIDPrinciples.Helpers
 {
     public class JsonToBikeSerializer
     {
+        ClassNameFromEnum NameFromEnum = new ClassNameFromEnum();
         public Bike GetBikeObject(string jsonBikeobj)
         {
             string cc = JObject.Parse(jsonBikeobj)["cc"].ToString();
-            cc = cc.Substring(1, cc.Length-1);
-            var obj = Type.GetType($"CSharpSOLIDPrinciples.Ratings.Rating{cc}");
+            //cc = cc.Substring(1, cc.Length-1);
+            var obj = Type.GetType($"CSharpSOLIDPrinciples.Ratings.Rating{NameFromEnum.GetClassName(cc)}");
             if (obj != null)
             {
                 var bike = JsonConvert.DeserializeObject<Bike>(jsonBikeobj, new StringEnumConverter());
