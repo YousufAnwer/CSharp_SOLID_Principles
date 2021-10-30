@@ -25,6 +25,8 @@ namespace CSharpSOLIDPrinciples
 
             var factory = new BikeFactory();
             var bikeRater = factory.Create(bike, this);
+
+            //Just because of using Liskov substitution principle we don't have to check for bikeRater object is null or not 
             bikeRater.Rate(bike);
             printer.PrintOnConsole("Rating completed.");
 

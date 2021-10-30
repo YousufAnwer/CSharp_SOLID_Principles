@@ -25,7 +25,8 @@ namespace CSharpSOLIDPrinciples.Factory
             }
             catch
             {
-
+                //Here we applying liskov substitution principle that isntead of return null we return a Specific class which is reacting as a null object 
+                //It is a concept of "Null Object Pattern"
                 return new RatingNull(bikeRatingEngine, bikeRatingEngine.printer);
             }
 

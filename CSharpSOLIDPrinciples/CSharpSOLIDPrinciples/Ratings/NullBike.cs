@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace CSharpSOLIDPrinciples.Ratings
 {
+    /// <summary>
+    /// using for applying Liskov's substitution principle
+    /// </summary>
     public class RatingNull : Rating
     {
         private readonly BikeRatingEngine _bikeRatingEngine;
