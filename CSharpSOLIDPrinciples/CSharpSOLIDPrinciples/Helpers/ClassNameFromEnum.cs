@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSharpSOLIDPrinciples.IServices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CSharpSOLIDPrinciples.Helpers
 {
-    public class ClassNameFromEnum
+    public class ClassNameFromEnum: IClassNameFromEnum
     {
         public string GetClassName(string bikeType)
         {

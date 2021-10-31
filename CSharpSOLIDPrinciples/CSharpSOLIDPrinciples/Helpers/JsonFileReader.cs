@@ -12,7 +12,7 @@ namespace CSharpSOLIDPrinciples.Helpers
     {
         public string Read()
         {
-            string json = File.ReadAllText(BikeConst.FilePath);
+            string json = File.ReadAllText(BikeConstants.FilePath);
             return json;
         }
     }

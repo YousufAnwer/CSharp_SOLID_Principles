@@ -1,4 +1,5 @@
 ﻿using CSharpSOLIDPrinciples.Helpers;
+using CSharpSOLIDPrinciples.IServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,11 @@ namespace CSharpSOLIDPrinciples.Ratings.Abstract
 {
     public abstract class Rating
     {
-        protected readonly IRating _context;
-        protected readonly Printer _logger;
-        public Rating(IRating context)
+        protected readonly IRatingUpdaterService _ratingUpdater;
+        protected  IPrinterService Logger { get; set; } = new PrinterService();
+        public Rating(IRatingUpdaterService ratingUpdater)
         {
-            _context = context;
-            _logger = _context.Logger;
+            _ratingUpdater = ratingUpdater;
         }
         public abstract void Rate(Bike bike);
     }

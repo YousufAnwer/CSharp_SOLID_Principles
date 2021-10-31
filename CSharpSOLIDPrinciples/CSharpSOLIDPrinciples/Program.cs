@@ -7,7 +7,7 @@ namespace CSharpSOLIDPrinciples
         static void Main(string[] args)
         {
             Console.WriteLine("Rating System..");
-            var engine = new BikeRatingEngine();
+            var engine = new BikeRatingClient();
             engine.Rate();
             if (engine.Rating > 0)
             {

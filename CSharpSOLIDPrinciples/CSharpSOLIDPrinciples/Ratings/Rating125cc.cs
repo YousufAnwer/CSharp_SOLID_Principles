@@ -1,4 +1,5 @@
 ﻿using CSharpSOLIDPrinciples.Helpers;
+using CSharpSOLIDPrinciples.IServices;
 using CSharpSOLIDPrinciples.Ratings.Abstract;
 using System;
 using System.Collections.Generic;
@@ -10,30 +11,28 @@ namespace CSharpSOLIDPrinciples.Ratings
 {
     public class Rating125cc : Rating
     {
-        //private readonly BikeRatingEngine _bikeRatingEngine;
-        //private readonly Printer _printer;
 
-        public Rating125cc(IRating context) : base(context)
+        public Rating125cc(IRatingUpdaterService ratingUpdater) : base(ratingUpdater)
         {
 
         }
         public override void Rate(Bike bike)
         {
-            _logger.PrintOnConsole("Rating 125 cc bike");
-            _logger.PrintOnConsole("Validating Bike");
+            Logger.PrintOnConsole("Rating 125 cc bike");
+            Logger.PrintOnConsole("Validating Bike");
             if (string.IsNullOrEmpty(bike.Company))
             {
-                _logger.PrintOnConsole("Must Sepcify Company");
+                Logger.PrintOnConsole("Must Sepcify Company");
                 return;
             }
             if (bike.Company == "Honda")
             {
-                _context.UpdateRating(4.9m);
+                _ratingUpdater.UpdateRating(4.9m);
 
             }
             else if (bike.Company == "Unique")
             {
-                _context.UpdateRating(4.5m);
+                _ratingUpdater.UpdateRating(4.5m);
             }
         }
 
