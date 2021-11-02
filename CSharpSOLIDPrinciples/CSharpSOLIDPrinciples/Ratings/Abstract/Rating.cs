@@ -10,12 +10,11 @@ namespace CSharpSOLIDPrinciples.Ratings.Abstract
 {
     public abstract class Rating
     {
-        protected readonly IRatingUpdaterService _ratingUpdater;
-        protected  IPrinterService Logger { get; set; } = new PrinterService();
-        public Rating(IRatingUpdaterService ratingUpdater)
+        protected  IPrinterService Logger { get; set; } = new ConsolePrinterService();
+        public Rating(IPrinterService logger)
         {
-            _ratingUpdater = ratingUpdater;
+            Logger = logger;
         }
-        public abstract void Rate(Bike bike);
+        public abstract decimal Rate(Bike bike);
     }
 }

@@ -1,0 +1,5 @@
+Starting rate
+Loadig Policy
+Rating 150 cc bike
+Validating Bike
+Rating completed.

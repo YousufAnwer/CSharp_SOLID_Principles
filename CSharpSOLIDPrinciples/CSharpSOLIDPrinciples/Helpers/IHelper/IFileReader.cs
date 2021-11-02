@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharpSOLIDPrinciples.IServices
+namespace CSharpSOLIDPrinciples.Helpers.IHelper
 {
-    public interface IPrinterService
+    public interface IFileReader
     {
-        void Print(string message);
+        string Read(string filePath);
     }
 }

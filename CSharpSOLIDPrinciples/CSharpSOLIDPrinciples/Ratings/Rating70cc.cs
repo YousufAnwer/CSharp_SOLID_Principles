@@ -12,28 +12,31 @@ namespace CSharpSOLIDPrinciples.Ratings
     public class Rating70cc : Rating
     {
 
-        public Rating70cc(IRatingUpdaterService ratingUpdater) : base(ratingUpdater)
+        public Rating70cc(IPrinterService printerService) : base(printerService)
         {
 
         }
-        public override void Rate(Bike bike)
+        public override decimal Rate(Bike bike)
         {
-            Logger.PrintOnConsole("Rating 70 cc bike");
-            Logger.PrintOnConsole("Validating Bike");
+            Logger.Print("Rating 70 cc bike");
+            Logger.Print("Validating Bike");
             if (string.IsNullOrEmpty(bike.Company))
             {
-                Logger.PrintOnConsole("Must Sepcify Company");
-                return;
+                Logger.Print("Must Sepcify Company");
+                return 0m;
             }
             if (bike.Company == "Honda")
             {
-                _ratingUpdater.UpdateRating(3.9m);
+                //_ratingUpdater.UpdateRating(3.9m);
+                return 3.9m;
 
             }
             else if (bike.Company == "Unique")
             {
-                _ratingUpdater.UpdateRating(3.5m);
+                // _ratingUpdater.UpdateRating(3.5m);
+                return 3.5m;
             }
+            return 0m;
         }
 
     }

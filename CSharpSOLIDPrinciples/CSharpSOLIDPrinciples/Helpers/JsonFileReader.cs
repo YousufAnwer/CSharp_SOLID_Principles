@@ -1,4 +1,5 @@
 ﻿using CSharpSOLIDPrinciples.Contants;
+using CSharpSOLIDPrinciples.Helpers.IHelper;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace CSharpSOLIDPrinciples.Helpers
 {
-    public class JsonFileReader
+    public class JsonFileReader : IFileReader
     {
-        public string Read()
+        public string Read(string filePath)
         {
-            string json = File.ReadAllText(BikeConstants.FilePath);
+            string json = File.ReadAllText(filePath);
             return json;
         }
     }

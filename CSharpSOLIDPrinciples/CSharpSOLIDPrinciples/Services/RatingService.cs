@@ -1,5 +1,6 @@
 ﻿using CSharpSOLIDPrinciples.Factory;
 using CSharpSOLIDPrinciples.Helpers;
+using CSharpSOLIDPrinciples.Helpers.IHelper;
 using CSharpSOLIDPrinciples.IServices;
 using CSharpSOLIDPrinciples.Ratings.Abstract;
 using System;
@@ -12,27 +13,33 @@ namespace CSharpSOLIDPrinciples
 {
     public class RatingService : IRatingService
     {
+        private readonly IFileReader _fileReader;
+        private readonly IBikeSerializer _bikeSerializer;
         public BikeRatingClient Engine { get; set; }
 
-
-        public Rating CreateRaterForBike(Bike policy, IRatingUpdaterService ratingUpdater, IClassNameFromEnum classNameFromEnum)
+        public RatingService(IFileReader fileReader, IBikeSerializer bikeSerializer)
         {
-            return new BikeFactory().Create(policy, ratingUpdater, classNameFromEnum);
+            _fileReader = fileReader;
+            _bikeSerializer = bikeSerializer;
+        }
+        public Rating CreateRaterForBike(Bike policy, IPrinterService printerService, IClassNameFromEnum classNameFromEnum)
+        {
+            return new BikeFactory().Create(policy, printerService, classNameFromEnum);
         }
 
         public Bike GetBikeFromJsonString(string bikeJson, IClassNameFromEnum classNameFromEnum)
         {
-            return new JsonToBikeSerializer().GetBikeObject(bikeJson, classNameFromEnum);
+            return _bikeSerializer.GetBikeObject(bikeJson, classNameFromEnum);
         }
 
-        public string LoadBikeFromFile()
+        public string LoadBikeFromFile(string filePath)
         {
-            return new JsonFileReader().Read();
+            return _fileReader.Read(filePath);
         }
 
-        public void PrintOnConsole(string message)
+        public void Print(string message)
         {
-            new PrinterService().PrintOnConsole(message);
+            new ConsolePrinterService().Print(message);
         }
 
         public void UpdateRating(decimal rating)

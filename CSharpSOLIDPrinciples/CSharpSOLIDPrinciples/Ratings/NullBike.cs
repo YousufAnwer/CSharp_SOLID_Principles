@@ -15,13 +15,14 @@ namespace CSharpSOLIDPrinciples.Ratings
     public class RatingNull : Rating
     {
 
-        public RatingNull(IRatingUpdaterService ratingUpdater) : base(ratingUpdater)
+        public RatingNull(IPrinterService printerService) : base(printerService)
         {
 
         }
-        public override void Rate(Bike bike)
+        public override decimal Rate(Bike bike)
         {
-            Logger.PrintOnConsole("Un Known Bike");
+            Logger.Print("Un Known Bike");
+            return 0m;
         }
     }
 }

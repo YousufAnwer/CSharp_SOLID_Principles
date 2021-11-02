@@ -11,9 +11,9 @@ namespace CSharpSOLIDPrinciples
 {
     public interface IRatingService : IPrinterService
     {
-        string LoadBikeFromFile();
+        string LoadBikeFromFile(string filePath);
         Bike GetBikeFromJsonString(string bikeJson, IClassNameFromEnum classNameFromEnum);
-        Rating CreateRaterForBike(Bike policy, IRatingUpdaterService ratingUpdater, IClassNameFromEnum classNameFromEnum);
+        Rating CreateRaterForBike(Bike policy, IPrinterService printerService, IClassNameFromEnum classNameFromEnum);
         BikeRatingClient Engine { get; set; }
     }
 }

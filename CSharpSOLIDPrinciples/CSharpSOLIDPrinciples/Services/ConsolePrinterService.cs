@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace CSharpSOLIDPrinciples.Helpers
 {
-    public class PrinterService:IPrinterService
+    public class ConsolePrinterService:IPrinterService
     {
-        public void PrintOnConsole(string message)
+        public void Print(string message)
         {
             Console.WriteLine(message);
         }
